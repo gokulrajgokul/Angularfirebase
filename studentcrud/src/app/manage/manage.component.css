@@ -1,0 +1,24 @@
+.container1 {
+    padding: 10px;
+    background: white;
+    box-shadow: 0px 0px 8px rgb(0, 0, 0, 0.1);
+    border-radius: 5px;
+  }
+  th,
+  td {
+    text-align: center;
+  }
+  .task {
+    font-size: 14px;
+  }
+  .task a {
+    text-decoration: none;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    padding: 10px;
+  }
+  

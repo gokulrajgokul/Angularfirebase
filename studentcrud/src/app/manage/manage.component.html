@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<div class="continer">
+  <div class="ms-3 me-3">
+    <div class="header">
+      <h4>Manage Tasks</h4>
+      <span class="task"><a href="#">Home</a>/Manage Tasks </span>
+    </div>
+    <div class="card">
+      <div class="container1">
+        <div class="card-header bg-primary text-white">Manage Tasks</div>
+
+        <div class="table-responsive m-1 align-items-center">
+          <table class="table table-bordered" id="taskTable">
+            <thead class="table-light">
+              <tr>
+                <th>SN</th>
+                <th>Name</th>
+                <th>Task Title</th>
+                <th>Task Description</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Edit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let task of tasks; let i = index">
+                <td>{{ task.sn }}</td>
+                <td>{{ task.name }}</td>
+                <td>{{ task.title }}</td>
+                <td>{{ task.desc }}</td>
+                <td>{{ task.start }}</td>
+                <td>{{ task.end }}</td>
+                <td>
+                  <button class="btn btn-primary btn-sm me-2">Edit</button>
+                  <button
+                    class="btn btn-danger btn-sm delete-btn"
+                    (click)="deleteTask(i)"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <h2><i class="fas fa-circle-user"></i> Admin Panel</h2>
+      </div>
+      <ul class="menu">
+        <li>
+          <button class="btn btn-dark w-100" (click)="navigateTo('admin-home')">
+            <i class="fas fa-home"></i> Home
+          </button>
+        </li>
+        <li>
+          <button
+            class="btn btn-dark w-100"
+            (click)="navigateTo('admin-profile')"
+          >
+            <i class="fas fa-user"></i> View/Edit Profile
+          </button>
+        </li>
+        <li>
+          <button
+            class="btn btn-dark w-100"
+            (click)="navigateTo('notify-staff')"
+          >
+            <i class="fas fa-bell"></i> Notify Staff
+          </button>
+        </li>
+        <li>
+          <button
+            class="btn btn-dark w-100"
+            (click)="navigateTo('notify-student')"
+          >
+            <i class="fas fa-bell"></i> Notify Student
+          </button>
+        </li>
+        <li>
+          <button class="btn btn-dark w-100" (click)="navigateTo('add-staffs')">
+            <i class="fas fa-user-plus"></i> Add Staff
+          </button>
+        </li>
+        <li>
+          <button
+            class="btn btn-dark w-100"
+            (click)="navigateTo('manage-staff')"
+          >
+            <i class="fas fa-users-cog"></i> Manage Staff
+          </button>
+        </li>
+        <li>
+          <button
+            class="btn btn-dark w-100"
+            (click)="navigateTo('add-students')"
+          >
+            <i class="fas fa-user-plus"></i> Add Student
+          </button>
+        </li>
+        <li>
+          <button
+            class="btn btn-dark w-100"
+            (click)="navigateTo('edit-students')"
+          >
+            <i class="fas fa-users-cog"></i> Manage Student
+          </button>
+        </li>
+        <li>
+          <button class="btn btn-dark w-100" (click)="navigateTo('add-task')">
+            <i class="fas fa-tasks"></i> Add Task
+          </button>
+        </li>
+        <li>
+          <button
+            class="btn btn-dark w-100"
+            (click)="navigateTo('manage-task')"
+          >
+            <i class="fas fa-tasks"></i> Manage Tasks
+          </button>
+        </li>
+        <li>
+          <button
+            class="btn btn-dark w-100"
+            (click)="navigateTo('student-feedback')"
+          >
+            <i class="fas fa-comments"></i> Student Feedback
+          </button>
+        </li>
+        <li>
+          <button
+            class="btn btn-dark w-100"
+            (click)="navigateTo('staff-feedback')"
+          >
+            <i class="fas fa-comments"></i> Staff Feedback
+          </button>
+        </li>
+        <li>
+          <button
+            class="btn btn-dark w-100"
+            (click)="navigateTo('staff-leave')"
+          >
+            <i class="fas fa-calendar-times"></i> Staff Leave
+          </button>
+        </li>
+        <li>
+          <button
+            class="btn btn-dark w-100"
+            (click)="navigateTo('student-leave')"
+          >
+            <i class="fas fa-calendar-times"></i> Student Leave
+          </button>
+        </li>
+        <li>
+          <button class="btn btn-danger w-100" (click)="navigateTo('logout')">
+            <i class="fas fa-sign-out-alt"></i> Logout
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Content -->
+    <div class="content" id="content">
+      <nav class="navbar">
+        <span class="menu-icon" (click)="toggleMenu()">&#9776;</span>
+      </nav>
+      <div class="card">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Toggle Sidebar (for demonstration purposes)
+      function toggleMenu() {
+        const sidebar = document.getElementById("sidebar");
+        sidebar.classList.toggle("visible");
+
+        const content = document.getElementById("content");
+        content.classList.toggle("shifted");
+      }
+    </script> -->
+  </body>
+</html>
