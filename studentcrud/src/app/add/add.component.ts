@@ -1,11 +1,26 @@
-import { Component } from '@angular/core';
+// import { Component } from '@angular/core';
+
+// @Component({
+//   selector: 'app-add',
+//   imports: [],
+//   templateUrl: './add.component.html',
+//   styleUrl: './add.component.css'
+// })
+// export class AddComponent {
+
+// }
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-add',
-  imports: [],
   templateUrl: './add.component.html',
-  styleUrl: './add.component.css'
+  styleUrls: ['./add.component.css']
 })
-export class AddComponent {
+export class AddComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
 
 }

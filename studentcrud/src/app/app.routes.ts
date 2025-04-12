@@ -1,11 +1,11 @@
-import { Routes } from '@angular/router';
-import { AdminSidebarComponent } from './admin-sidebar/admin-sidebar.component';
-import { AddTaskComponent } from './add-task/add-task.component';
-import { ManageTaskComponent } from './manage-task/manage-task.component';
+import { Routes } from  '@angular/router';
+import { AddComponent } from './add/add.component';
+import { ManageComponent } from './manage/manage.component';
+import { AdminSidebarComponent } from './adminsidebar/adminsidebar.component';
 
 export const routes: Routes = [
-    {path:'',component:AdminSidebarComponent},
-    {path:'add-task',component:AddTaskComponent},
-    {path:'manage-task',component:ManageTaskComponent}
-    
+    {path:'add-task',component:AddComponent},
+    {path:'manage',component:ManageComponent},
+    // {path:'admin',component:AdminsidebarComponent},
+    {path:'admin',component:AdminSidebarComponent}
 ];
