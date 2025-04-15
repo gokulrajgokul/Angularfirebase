@@ -4,8 +4,8 @@ import { ManageComponent } from './manage/manage.component';
 import { AdminSidebarComponent } from './adminsidebar/adminsidebar.component';
 
 export const routes: Routes = [
-    {path:'add-task',component:AddComponent},
+    {path:'add',component:AddComponent},
     {path:'manage',component:ManageComponent},
-    // {path:'admin',component:AdminsidebarComponent},
+    {path:'',component:AdminSidebarComponent},
     {path:'admin',component:AdminSidebarComponent}
 ];
