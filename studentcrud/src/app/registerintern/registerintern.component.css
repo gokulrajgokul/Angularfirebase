@@ -1,0 +1,108 @@
+body {
+    background-color: #FAFAFA;
+    font-family: 'Poppins', sans-serif;
+}
+#header {
+    background: linear-gradient(to right, #0056B3, #003C82);
+    border-radius: 12px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+.navbar-nav .nav-item .btn {
+    background: linear-gradient(to right, #F4B400, #E0A100);
+    border: none;
+    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 50px;
+    transition: all 0.3s ease-in-out;
+}
+.navbar-nav .nav-item .btn:hover {
+    background: #D98B00;
+    transform: translateY(-2px);
+}
+.navbar-nav .nav-item a {
+    color: #FFFFFF;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+#form {
+    background-color: #e5e5e5;
+    border-radius: 12px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+.form-control {
+    padding: 10px;
+    border: 1px solid #DDDDDD;
+    border-radius: 8px;
+    background: #F8F9FA;
+    transition: all 0.3s ease;
+}
+.form-control:focus {
+    border-color: #0056B3;
+    outline: none;
+    background: #FFFFFF;
+    box-shadow: 0 0 8px rgba(0, 86, 179, 0.2);
+}
+#submit {
+    transform: translateY(-5px);
+}
+#btn-save {
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #003C82;
+    color: white;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    width: 30%;
+    background: linear-gradient(to right, #0056B3, #003C82);
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}
+#btn-save span:first-child {
+    position: relative;
+    transition: color 600ms cubic-bezier(0.48, 0, 0.12, 1);
+    z-index: 10;
+}
+#btn-save:hover {
+    background: #003C82;
+    transform: translateY(-2px);
+}
+#btn-save span:last-child {
+    color: white;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    top: 50%;
+    opacity: 0;
+    display: block;
+    height: 14px;
+    line-height: 13px;
+    transform: translateY(225%) translateX(-50%);
+    transition: all 500ms cubic-bezier(0.48, 0, 0.12, 1);
+    z-index: 100;
+}
+#btn-save:after {
+    content: "";
+    position: absolute;
+    bottom: -50%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #8f44fd;
+    transform-origin: bottom center;
+    transform: skewY(9.3deg) scaleY(0);
+    transition: transform 600ms cubic-bezier(0.48, 0, 0.12, 1);
+    z-index: 50;
+}
+#btn-save:hover:after {
+    transform: skewY(9.3deg) scaleY(2);
+}
+#btn-save:hover span:last-child {
+    transform: translateX(-50%) translateY(-50%);
+    opacity: 1;
+    transition: all 900ms cubic-bezier(0.48, 0, 0.12, 1);
+}

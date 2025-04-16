@@ -1,0 +1,69 @@
+<div class="container-fluid p-2">
+    <img class="img-fluid rounded" src="/assets/images/femtologo.png" alt="Femto" style="max-height: 80px; width: auto;">
+  
+    <nav class="navbar navbar-expand-md bg-light shadow rounded p-2" id="header">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav gap-2">
+          <li class="nav-item"><a routerLink="/registerintern" class="btn rounded-pill text-white">Register Intern</a></li>
+          <li class="nav-item"><a routerLink="/interndetails" class="btn rounded-pill text-white">Intern Details</a></li>
+          <li class="nav-item"><a routerLink="/assigntask" class="btn rounded-pill text-white">Assign Task</a></li>
+          <li class="nav-item"><a routerLink="/pendingtask" class="btn rounded-pill text-white">Pending Task</a></li>
+          <li class="nav-item"><a routerLink="/taskreport" class="btn rounded-pill text-white">Task Report</a></li>
+        </ul>
+      </div>
+    </nav>
+  
+    <div class="card p-4 mt-2" id="form">
+      <div class="row g-3">
+        <div class="col-lg-5 col-md-5 col-sm-6">
+          <input class="form-control offset-md-1" type="text" name="name" [(ngModel)]="data.name" placeholder="Intern Name">
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-6">
+          <input class="form-control offset-md-4" type="password" name="password" [(ngModel)]="data.password" placeholder="Password">
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-6">
+          <input class="form-control offset-md-1" type="email" name="email" [(ngModel)]="data.email" placeholder="Email">
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-6">
+          <input class="form-control offset-md-4" type="text" name="domain" [(ngModel)]="data.domain" placeholder="Domain">
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-6">
+          <input class="form-control offset-md-1" type="number" name="duration" [(ngModel)]="data.duration" placeholder="Duration">
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-6">
+          <input class="form-control offset-md-4" type="date" name="date" [(ngModel)]="data.date">
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-6">
+          <input class="form-control offset-md-1" type="number" name="whatsapp" [(ngModel)]="data.whatsapp" placeholder="WhatsApp Number">
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-6">
+          <input class="form-control offset-md-4" type="text" name="collegename" [(ngModel)]="data.collegename" placeholder="College Name">
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-6">
+          <input class="form-control offset-md-1" type="number" name="passyear" [(ngModel)]="data.passyear" placeholder="Passed out year">
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-6">
+          <input class="form-control offset-md-4" type="text" name="degree" [(ngModel)]="data.degree" placeholder="Degree">
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-6">
+          <input class="form-control offset-md-1" type="text" name="department" [(ngModel)]="data.department" placeholder="Department">
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-6">
+          <input class="form-control offset-md-4" type="text" name="internmode" [(ngModel)]="data.internmode" placeholder="Mode of Internship">
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-6">
+          <input class="form-control offset-md-1" type="text" name="location" [(ngModel)]="data.location" placeholder="Location">
+        </div>
+        <div class="col-md-5 col-sm-6 offset-md-2 text-center" id="submit">
+          <button class="btn-save" id="btn-save" (click)="saveData()">
+            <span>Save</span>
+            <span>Thanks!</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

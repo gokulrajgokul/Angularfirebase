@@ -1,0 +1,109 @@
+
+
+#header {
+    background: linear-gradient(to right, #0056B3, #003C82);
+    border-radius: 12px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+.navbar-nav .nav-item .btn {
+    background: linear-gradient(to right, #F4B400, #E0A100);
+    border: none;
+    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 50px;
+    transition: all 0.3s ease-in-out;
+}
+.navbar-nav .nav-item .btn:hover {
+    background: #D98B00;
+    transform: translateY(-2px);
+}
+.navbar-nav .nav-item a {
+    color: #FFFFFF;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+#col1{
+    /* background-color: cadetblue; */
+    border-radius: 20px;
+    padding: 20px;
+}
+input {
+    padding: 10px;
+    border: 1px solid #DDDDDD;
+    border-radius: 8px;
+    background:  #F8F9FA;
+    transition: all 0.3s ease;
+}
+
+input::placeholder {
+    color:grey ;
+    font-style: italic;
+} 
+
+textarea::placeholder {
+    color:gray;
+    font-style: italic;
+}
+textarea:focus {
+    border-color: dodgerblue;
+    outline: none;
+}
+select {
+    color: gray; 
+    font-size: 16px;
+    padding: 8px;
+    width: 100%;
+    height: 45px;
+    cursor: pointer;
+}
+select:focus{
+    border-color: dodgerblue;
+    outline: none;
+    border: 1px solid blue;
+}
+input[type="date"] {
+    color: gray;
+    appearance: none;
+}
+
+input:focus {
+    border-color: #0056B3;
+    outline: none;
+    background: #FFFFFF;
+    box-shadow: 0 0 8px rgba(0, 86, 179, 0.5);
+}
+#btn {
+    background: #0056B3;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+#btn:hover {
+    background: #003C82;
+    transform: translateY(-2px);
+}
+h4{
+    color: #0056B3;
+    font-weight: bold;
+    text-shadow:1px 1px 1px #F4B400;
+}
+#col2{
+    padding: 20px;
+}
+#button {
+    background-color: gray;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#button:hover {
+    transform: translateY(-2px);
+    background-color: rgb(90, 89, 89);
+}
