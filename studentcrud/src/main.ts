@@ -9,7 +9,31 @@ bootstrapApplication(AppComponent, appConfig)
 
 
 
-
+  import { Injectable } from '@angular/core';
+  import { HttpClient } from '@angular/common/http';
+  
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class FirebaseService {
+    private dbUrl = 'https://angularintern-92770-default-rtdb.firebaseio.com/';
+  
+    constructor(private http: HttpClient) {}
+  
+    // Method to add intern and tasks using same ID
+    addInternWithTasks(internData: any, tasksData: any, id: string) {
+      // Add intern
+      this.http.put(`${this.dbUrl}${id}.json`, internData).subscribe(res => {
+        console.log('Intern added:', res);
+      });
+  
+      // Add tasks using same ID
+      this.http.put(`${this.dbUrl}tasks/${id}.json`, tasksData).subscribe(res => {
+        console.log('Tasks added:', res);
+      });
+    }
+  }
+  
 
 
 

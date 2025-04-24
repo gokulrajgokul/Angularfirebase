@@ -13,6 +13,7 @@ import { Add } from '../models/add.model';
 })
 export class AssigntaskComponent implements OnInit {
   data: Add = {
+    id:0,
     name: '',
     tasktitle: '',
     description: '',
@@ -72,6 +73,7 @@ export class AssigntaskComponent implements OnInit {
 
   resetForm() {
     this.data = {
+      id: 0,  // Include id here
       name: '',
       tasktitle: '',
       description: '',
@@ -80,3 +82,5 @@ export class AssigntaskComponent implements OnInit {
     };
   }
 }
+
+

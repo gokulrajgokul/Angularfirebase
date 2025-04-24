@@ -26,22 +26,41 @@ export class RegisterinternComponent {
     location: ''
   };
 
+  
+  internId: string = '';
+
   constructor(private db: Database) {}
-
+  // saveData() {
+  //   const internId = this.data.name + '-' + Date.now();
+  //   const dbRef = ref(this.db, 'intern/' + internId);
+  
+  //   const dataWithId = { ...this.data, id: internId }; // include id
+  
+  //   set(dbRef, dataWithId)
+  //     .then(() => {
+  //       alert('Intern registered successfully!');
+  //       this.resetForm();
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error saving intern data: ', error);
+  //     });
+  // }
   saveData() {
-    const internId = this.data.name + '-' + Date.now();
-    const dbRef = ref(this.db, 'intern/' + internId);
-
-    set(dbRef, this.data)
+    this.internId = this.data.name + '-' + Date.now();
+    const dbRef = ref(this.db, 'intern/' + this.internId);
+  
+    const dataWithId = { ...this.data, id: this.internId };
+  
+    set(dbRef, dataWithId)
       .then(() => {
         alert('Intern registered successfully!');
-        this.resetForm();
+        // Keep the ID so it can be used for payment
       })
       .catch((error) => {
         console.error('Error saving intern data: ', error);
       });
   }
-
+  
   resetForm() {
     this.data = {
       name: '',
