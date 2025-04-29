@@ -2,15 +2,15 @@
 
 
   <h1 class="fw-bold text-center">Payment Details</h1>
-   <div class="col-lg-6 m-3">
+  <div class="col-lg-6 m-3">
     <form (ngSubmit)="savePayment() ">
-      <label  class="fw-bold" for="intern">Select Intern:</label>
-      <select [(ngModel)]="selectedInternId"  name="intern" required  (change)="onInternChange()">
+      <label class="fw-bold" for="intern">Select Intern:</label>
+      <select [(ngModel)]="selectedInternId" name="intern" required (change)="onInternChange()">
         <option value="">-- Select Intern --</option>
         <option *ngFor="let intern of internList" [value]="intern.id">
           {{ intern.name }} - {{ intern.domain }}
         </option>
-      </select> 
+      </select>
       <!-- <div class="mt-2">
         <label for="name" class="fw-bold">Name</label>
         <select class="form-select" [(ngModel)]="selectedInternId" name="name"  id="name" required >
@@ -41,12 +41,19 @@
           <option value="cash">Cash</option>
         </select>
       </div>
-      <div class="mt-4 text-center">
+      <!-- <div class="mt-4 text-center">
         <button type="submit" class="btn btn-primary rounded px-4">Submit</button>
+      </div> -->
+      <div class="mt-4 text-center">
+        <button (click)="savePayment()">
+          {{ editingPaymentKey ? 'Update ' : 'Submit ' }}
+        </button>
       </div>
     </form>
   </div>
+ 
 </div>
+
 
 
 
@@ -70,8 +77,8 @@
         <td class="p-2 text-center">{{ payment.paymentDate }}</td>
         <td class="p-2 text-center">{{ payment.mode }}</td>
         <td class="p-2 text-center">
-          <button class="btn btn-secondary rounded mx-2" >Edit</button>
-          <button class="btn btn-danger rounded mx-2">Delete</button>
+          <button class="btn btn-secondary rounded mx-2" (click)="editPayment(payment)">Edit</button>
+          <button class="btn btn-danger rounded mx-2" (click)="deletePayment(payment.key)">Delete</button>
           <!-- (click)="deletePayment(payment.id)"
           (click)="editPayment(payment)" -->
         </td>

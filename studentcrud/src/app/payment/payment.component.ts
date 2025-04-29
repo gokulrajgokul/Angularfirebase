@@ -1,8 +1,7 @@
 import { Component, OnInit, inject, NgZone } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Database, ref, set, onValue } from '@angular/fire/database';
-import { push } from '@angular/fire/database';
+import { Database, ref, set, onValue, push, remove } from '@angular/fire/database';
 
 export interface Payment {
   name: string;
@@ -29,9 +28,10 @@ export class PaymentComponent implements OnInit {
   };
 
   internList: any[] = [];
-  paymentList: Payment[] = [];
+  paymentList: any[] = [];
 
-  selectedInternId: string = ''; // <-- store selected internId
+  selectedInternId: string = '';
+  editingPaymentKey: string | null = null;
 
   private db = inject(Database);
   private ngZone = inject(NgZone);
@@ -51,7 +51,7 @@ export class PaymentComponent implements OnInit {
       });
     });
 
-    // Fetch payments
+    // ✅ Updated: Fetch payments and include Firebase keys
     const payRef = ref(this.db, 'payments/');
     onValue(payRef, (snapshot) => {
       this.ngZone.run(() => {
@@ -59,44 +59,87 @@ export class PaymentComponent implements OnInit {
         this.paymentList = [];
         if (payments) {
           for (let key in payments) {
-            this.paymentList.push(payments[key]);
+            this.paymentList.push({
+              key: key,
+              ...payments[key]
+            });
           }
         }
       });
     });
   }
 
-  
-savePayment() {
-  if (!this.selectedInternId) {
-    alert('Please select an intern before making payment.');
-    return;
+  savePayment() {
+    if (!this.selectedInternId) {
+      alert('Please select an intern before making payment.');
+      return;
+    }
+
+    const paymentData = {
+      ...this.data,
+      name: this.data.name
+    };
+
+    if (this.editingPaymentKey) {
+      const updateRef = ref(this.db, 'payments/' + this.editingPaymentKey);
+      set(updateRef, paymentData)
+        .then(() => {
+          alert('Payment updated successfully!');
+          this.resetForm();
+        })
+        .catch((error) => {
+          console.error('Error updating payment: ', error);
+        });
+    } else {
+      const payRef = ref(this.db, 'payments/');
+      push(payRef, paymentData)
+        .then(() => {
+          alert('Payment saved successfully!');
+          this.resetForm();
+        })
+        .catch((error) => {
+          console.error('Error saving payment data: ', error);
+        });
+    }
   }
 
-  const payRef = ref(this.db, 'payments/');
-  const paymentData = {
-    ...this.data,
-    name: this.selectedInternId // Save name from dropdown
-  };
+  editPayment(payment: any) {
+    this.editingPaymentKey = payment.key;
+    this.data = {
+      name: payment.name,
+      domain: payment.domain,
+      amount: payment.amount,
+      paymentDate: payment.paymentDate,
+      mode: payment.mode
+    };
 
-  push(payRef, paymentData)
-    .then(() => {
-      alert('Payment saved successfully!');
-      this.resetForm();
-    })
-    .catch((error) => {
-      console.error('Error saving payment data: ', error);
-    });
-}
-
-onInternChange() {
-  const selected = this.internList.find(intern => intern.id === this.selectedInternId);
-  if (selected) {
-    this.data.name = selected.name;
-    this.data.domain = selected.domain;
+    const matchedIntern = this.internList.find(i => i.name === payment.name);
+    if (matchedIntern) {
+      this.selectedInternId = matchedIntern.id;
+    }
   }
-}
- 
+
+  deletePayment(key: string) {
+    const confirmDelete = confirm("Are you sure you want to delete this payment?");
+    if (!confirmDelete) return;
+
+    const paymentRef = ref(this.db, `payments/${key}`);
+    remove(paymentRef)
+      .then(() => {
+        alert('Payment deleted successfully!');
+      })
+      .catch((error) => {
+        console.error('Error deleting payment:', error);
+      });
+  }
+
+  onInternChange() {
+    const selected = this.internList.find(intern => intern.id === this.selectedInternId);
+    if (selected) {
+      this.data.name = selected.name;
+      this.data.domain = selected.domain;
+    }
+  }
 
   resetForm() {
     this.data = {
@@ -107,5 +150,6 @@ onInternChange() {
       mode: ''
     };
     this.selectedInternId = '';
+    this.editingPaymentKey = null;
   }
 }
