@@ -5,6 +5,7 @@ import { AdminSidebarComponent } from './adminsidebar/adminsidebar.component';
 import { RegisterinternComponent } from './registerintern/registerintern.component';
 import { AssigntaskComponent } from './assigntask/assigntask.component';
 import { PaymentComponent } from './payment/payment.component';
+import { FileUploadComponent } from './fileupload/fileupload.component';
 
 export const routes: Routes = [
     {path:'add',component:AddComponent},
@@ -15,5 +16,6 @@ export const routes: Routes = [
     {path:'assigntask',component:AssigntaskComponent},
     {path:'',component:AssigntaskComponent},
     {path:'payment',component:PaymentComponent},
+    {path:'fileupload',component:FileUploadComponent}
     
 ];

@@ -37,7 +37,7 @@ export class PaymentComponent implements OnInit {
   private ngZone = inject(NgZone);
 
   ngOnInit(): void {
-    // Fetch interns
+    
     const internRef = ref(this.db, 'intern/');
     onValue(internRef, (snapshot) => {
       this.ngZone.run(() => {
@@ -50,8 +50,7 @@ export class PaymentComponent implements OnInit {
         }
       });
     });
-
-    // ✅ Updated: Fetch payments and include Firebase keys
+ 
     const payRef = ref(this.db, 'payments/');
     onValue(payRef, (snapshot) => {
       this.ngZone.run(() => {
@@ -68,41 +67,32 @@ export class PaymentComponent implements OnInit {
       });
     });
   }
-
   savePayment() {
-    if (!this.selectedInternId) {
-      alert('Please select an intern before making payment.');
+    if (!this.selectedInternId || !this.data.name) {
+      alert('Please select an intern and ensure name is filled before making payment.');
       return;
     }
-
+  
+    // Create payment key using name and ID (same format as in intern node)
+    const paymentKey = ` ${this.selectedInternId}`;
+  
     const paymentData = {
       ...this.data,
       name: this.data.name
     };
-
-    if (this.editingPaymentKey) {
-      const updateRef = ref(this.db, 'payments/' + this.editingPaymentKey);
-      set(updateRef, paymentData)
-        .then(() => {
-          alert('Payment updated successfully!');
-          this.resetForm();
-        })
-        .catch((error) => {
-          console.error('Error updating payment: ', error);
-        });
-    } else {
-      const payRef = ref(this.db, 'payments/');
-      push(payRef, paymentData)
-        .then(() => {
-          alert('Payment saved successfully!');
-          this.resetForm();
-        })
-        .catch((error) => {
-          console.error('Error saving payment data: ', error);
-        });
-    }
+  
+    // Use set() instead of push() to store payment under custom key
+    const payRef = ref(this.db, 'payments/' + paymentKey);
+    set(payRef, paymentData)
+      .then(() => {
+        alert(this.editingPaymentKey ? 'Payment updated successfully!' : 'Payment saved successfully!');
+        this.resetForm();
+      })
+      .catch((error) => {
+        console.error('Error saving payment data: ', error);
+      });
   }
-
+  
   editPayment(payment: any) {
     this.editingPaymentKey = payment.key;
     this.data = {

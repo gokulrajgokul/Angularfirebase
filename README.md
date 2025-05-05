@@ -1,1 +1,1 @@
-# Angularfirebase
+## npm install firebase @angular/fire
